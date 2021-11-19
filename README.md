@@ -7,9 +7,11 @@ political events in their area as well as aggregate, share and view news items i
 
 </div>
 
-[![Build Status](https://travis-ci.com/ucberkeley/hw-action-map-ci.svg?token=8LjFnuAXBt4SAuz8Mkf8&branch=master)](https://travis-ci.com/ucberkeley/hw-action-map-ci)
+[![Build Status](https://app.travis-ci.com/cs169/hw-agile-iterations-fa21-53.svg?token=5NuRsFH36NRKV4rTas5q&branch=master)](https://app.travis-ci.com/cs169/hw-agile-iterations-fa21-53)
 
-[![codecov](https://codecov.io/gh/ucberkeley/hw-action-map-ci/branch/master/graph/badge.svg?token=SGYCvQX4Us)](https://codecov.io/gh/ucberkeley/hw-action-map-ci)
+[![codecov](https://codecov.io/gh/cs169/hw-agile-iterations-fa21-53/branch/main/graph/badge.svg?token=7nfVCGbpVL)](https://codecov.io/gh/cs169/hw-agile-iterations-fa21-53)
+
+[![Bluejay Dashboard](https://img.shields.io/badge/Bluejay-Dashboard_53-blue.svg)](http://dashboard.bluejay.governify.io/dashboard/script/dashboardLoader.js?dashboardURL=https://reporter.bluejay.governify.io/api/v4/dashboards/tpa-cs169a-2021-GH-cs169_hw-agile-iterations-fa21-53/main)
 
 ### Getting Setup Locally
 
