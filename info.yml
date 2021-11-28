@@ -26,3 +26,9 @@ project:
       githubUsername: 'courageouspickle'
       pivotalUsername: 'HarrisonDill'
       herokuEmail: 'courage@berkeley.edu'
+		member4:
+      name: 'Ojasvi'
+      surname: 'Khanna' 
+      githubUsername: 'okay162'
+      pivotalUsername: 'okay162'
+      herokuEmail: 'okhanna@berkeley.edu'
