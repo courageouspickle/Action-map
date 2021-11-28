@@ -6,7 +6,7 @@ project:
     pivotal:
       url: 'https://www.pivotaltracker.com/n/projects/2540796'
     heroku:
-      url: 'https://young-river-09247.herokuapp.com/'
+      url: 'https://fa21-53.herokuapp.com/'
   members:
     member1:
       name: 'Governify'
