@@ -43,7 +43,7 @@ class Representative < ApplicationRecord
         {party: party}
     end
 	
-		def self.get_party(official)
+		def self.get_photo(official)
         if official.photo_url.nil? || official.photo_url.blank? || official.photo_url.empty?
 					photo = ' ' 
 				else 
