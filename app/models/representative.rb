@@ -71,12 +71,15 @@ class Representative < ApplicationRecord
         address = get_address(official)
 				party = get_party(official)
 				photo = get_photo(official)
-				phones = get_phones(official)
+# 				phones = get_phones(official)
         
 
-        {name:   official.name, ocdid: ocdid, title: title, city: address[:city],
+#         {name:   official.name, ocdid: ocdid, title: title, city: address[:city],
+#           street: address[:street], state: address[:state], zip: address[:zip], party: party[:party],
+#           phones: phones[:phones], photo: photo[:photo]}
+              {name:   official.name, ocdid: ocdid, title: title, city: address[:city],
           street: address[:street], state: address[:state], zip: address[:zip], party: party[:party],
-          phones: phones[:phones], photo: photo[:photo]}
+          photo: photo[:photo]}
     end
 	
 		def self.civic_api_to_representative_params(rep_info)
