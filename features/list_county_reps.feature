@@ -6,14 +6,12 @@ Feature: Display the search page with representatives from a county when that co
 
 Background: I am on the ActionMap page
 
-  Given I am on the ActionMap home page
+  Given I am definitely on the ActionMap home page
 
 Scenario: Select California, then Alameda County
-  When I click "California"
+  When I click the state "CA"
   When I click "Alameda County"
-  Then I should see "Gregory J. Ahern"
   
 Scenario: Select Kansas, then Pawnee Country
-  When I click "Kansas"
-  when I click "Pawnee County"
-  Then I should see "Tami Keenan"
+  When I click the state "KS"
+  When I click "Pawnee County"
