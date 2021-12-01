@@ -54,17 +54,17 @@ class Representative < ApplicationRecord
     end
 
 
-		def self.get_phones(official)
-				if official.phones.nil? || official.phones.blank? || official.phones.empty?
-					phones = ' ' 
-				else 
-					phones = ''
-        	official.phones&.each do |p|
-          phones += p + ' '
-				end			
+# 		def self.get_phones(official)
+# 				if official.phones.nil? || official.phones.blank? || official.phones.empty?
+# 					phones = ' ' 
+# 				else 
+# 					phones = ''
+#         	official.phones&.each do |p|
+#           phones += p + ' '
+# 				end			
     
-        {phones: phones}
-    end
+#         {phones: phones}
+#     end
 	
 	  def self.parse_official(official, title, ocdid)
 			
@@ -83,31 +83,48 @@ class Representative < ApplicationRecord
         reps = []
 
         rep_info.officials.each_with_index do |official, index|
-          
-            ocdid_temp = ''
-            title_temp = ''
-            city, street, state, zip = ''
 
-            rep_info.offices.each do |office|
-                if office.official_indices.include? index
-                    title_temp = office.name
-                    ocdid_temp = office.division_id
-                end
-            end
-          
-            official.address&.each do |location|
-                city = location.city, street = location.line1, state = location.state, zip = location.zip
-            end
-          
-            party = official.party unless official.party.nil?
-            photo = official.photo_url unless official.photo_url.nil?            
+#             ocdid_temp = ''
+#             title_temp = ''
+#             city, street, state, zip = ''
 
-            rep = Representative.create!({ name: official.name, ocdid: ocdid_temp,
-                title: title_temp, city: city, state: state, street: street, zip: zip, party: party, photo: photo})
+#             rep_info.offices.each do |office|
+#                 if office.official_indices.include? index
+#                     title_temp = office.name
+#                     ocdid_temp = office.division_id
+#                 end
+#             end
+          
+#             official.address&.each do |location|
+#                 city = location.city, street = location.line1, state = location.state, zip = location.zip
+#             end
+          
+#             party = official.party unless official.party.nil?
+#             photo = official.photo_url unless official.photo_url.nil?            
+
+#             rep = Representative.create!({ name: official.name, ocdid: ocdid_temp,
+#                 title: title_temp, city: city, state: state, street: street, zip: zip, party: party, photo: photo})
+
+					
+						ocdid_temp, title_temp = get_ocdid_and_title(rep_info, index)
+
+            params = parse_official(official, title_temp, ocdid_temp)
+
+            rep = Representative.where({name: official.name, title: title_temp }).limit(1).take
+            if rep.nil? || rep.empty? || rep.blank?
+                rep = Representative.create!(params)
+                rep.save
+            end
 
             reps.push(rep)
         end
         reps
     end
+		
+		private_class_method :get_ocdid_and_title
+		private_class_method :get_address
+		private_class_method :get_party
+# 		private_class_method :get_phones
+		private_class_method :parse_official
 
 end
