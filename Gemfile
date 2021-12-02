@@ -23,6 +23,7 @@ gem 'omniauth'
 gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
+gem 'rails-controller-testing'
 
 # Use Haml instead of erb
 gem 'haml-rails'
