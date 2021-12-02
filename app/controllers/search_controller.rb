@@ -7,17 +7,17 @@ class SearchController < ApplicationController
         address = params[:address]
         service = Google::Apis::CivicinfoV2::CivicInfoService.new
         service.key = Rails.application.credentials.dig(:GOOGLE_API_KEY)
-#         begin
+        #         begin
         result = service.representative_info_by_address(address: address)
         @representatives = Representative.civic_api_to_representative_params(result)
-#         rescue StandardError
-#             redirect_to representatives_path
-#             flash[:notice] = 'Invalid address'
-#             return
-#         end
+        #         rescue StandardError
+        #             redirect_to representatives_path
+        #             flash[:notice] = 'Invalid address'
+        #             return
+        #         end
         render 'representatives/search'
     end
-  
+
     def show
         @name = if params[:format].nil?
                     params[:name]

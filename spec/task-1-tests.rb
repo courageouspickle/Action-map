@@ -3,34 +3,38 @@ require 'rails_helper'
 require 'ostruct'
 
 civic_result1 = OpenStruct.new(
-{officials: [OpenStruct.new({address:[OpenStruct.new({
-																		 city:  'Washington',
-																		 state: 'DC',
-																		 zip:   '20500',
-																		 line1: '1600 Pennsylvania Avenue Northwest'})],
-                               name:      'Donald J. Trump',
-                               party:     'Republican Party',
-                               photo_url: 'https://www.whitehouse.gov/sites/whitehouse.gov/files/images/45/PE%20Color.jpg'}),
-            OpenStruct.new({address:[OpenStruct.new({
-																		 city:  'Berkeley',
-																		 state: 'CA',
-																		 zip:   '00000',
-																		 line1: 'test address'})],
-                               name:      'test',
-                               party:     'Democratic Party',
-                               photo_url: 'test url'})],
-offices: [OpenStruct.new({division_id:      'ocd-division/country:us',
-										      official_indices: [0],
-										      name:             'President of the United States'}),
-	        OpenStruct.new({division_id:      'test division',
-										      official_indices: [1],
-										 			name:             'test'})]})
+    { officials: [OpenStruct.new({ address:   [OpenStruct.new({
+                                                                  city:  'Washington',
+                                                                  state: 'DC',
+                                                                  zip:   '20500',
+                                                                  line1: '1600 Pennsylvania Avenue Northwest'
+                                                              })],
+                                   name:      'Donald J. Trump',
+                                   party:     'Republican Party',
+                                   photo_url: 'https://www.whitehouse.gov/sites/whitehouse.gov/files/images/45/PE%20Color.jpg' }),
+                  OpenStruct.new({ address:   [OpenStruct.new({
+                                                                  city:  'Berkeley',
+                                                                  state: 'CA',
+                                                                  zip:   '00000',
+                                                                  line1: 'test address'
+                                                              })],
+                                   name:      'test',
+                                   party:     'Democratic Party',
+                                   photo_url: 'test url' })],
+      offices:   [OpenStruct.new({ division_id:      'ocd-division/country:us',
+                                   official_indices: [0],
+                                   name:             'President of the United States' }),
+                  OpenStruct.new({ division_id:      'test division',
+                                   official_indices: [1],
+                                   name:             'test' })] }
+)
 
 civic_result2 = OpenStruct.new(
-{officials: [OpenStruct.new({ name: 'Donald J. Trump' })],
- offices:   [OpenStruct.new({division_id:      'ocd-division/country:us',
-                             official_indices: [0],
-                             name:             'President of the United States'})]})
+    { officials: [OpenStruct.new({ name: 'Donald J. Trump' })],
+      offices:   [OpenStruct.new({ division_id:      'ocd-division/country:us',
+                                   official_indices: [0],
+                                   name:             'President of the United States' })] }
+)
 
 # Rspec.describe Representative do
 # 	describe RepresentativesController, type: :controller do
@@ -149,7 +153,7 @@ describe 'Representatives' do
             reps = Representative.civic_api_to_representative_params(civic_result2)
             reps.each do |r|
                 expect(Representative.where(name: r.name, ocdid: r.ocdid, title: r.title,
-                    address: r.address, party: r.party, photo_url: r.photo_url).size).to eq 1
+                                            address: r.address, party: r.party, photo_url: r.photo_url).size).to eq 1
             end
         end
     end
