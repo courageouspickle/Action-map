@@ -12,7 +12,8 @@
                     %tbody
                         - @representatives.each_with_index do |rep, _index|
                             %tr
-                                %td= rep.name
+                                %td= link_to rep.name, show_representatives_path(name: rep.name),
+                                class: 'btn btn-info btn-sm'
                                 %td= rep.title
                                 %td
                                     = link_to representative_news_items_path(rep.id), class: 'btn btn-primary' do

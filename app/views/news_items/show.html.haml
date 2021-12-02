@@ -16,7 +16,8 @@
                     %dt.col-sm-3.text-md-right Representative:
                     %dt.col-sm-9
                         %a{ href: representative_path(@representative) }
-                            = @news_item.representative.name
+                            = link_to @news_item.representative.name,
+                              show_representatives_path(name: @news_item.representative.name)
                 %dl.row
                     %dt.col-sm-3.text-md-right Time Added:
                     %dt.col-sm-9
