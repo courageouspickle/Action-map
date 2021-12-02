@@ -102,7 +102,8 @@ class Representative < ApplicationRecord
             #             photo = official.photo_url unless official.photo_url.nil?
 
             #             rep = Representative.create!({ name: official.name, ocdid: ocdid_temp,
-            #                 title: title_temp, city: city, state: state, street: street, zip: zip, party: party, photo: photo})
+            #                 title: title_temp, city: city, state: state, street: street, 
+            #                 zip: zip, party: party, photo: photo})
 
             ocdid_temp, title_temp = get_ocdid_and_title(rep_info, index)
 
