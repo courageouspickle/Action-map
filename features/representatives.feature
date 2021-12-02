@@ -1,50 +1,22 @@
-#Given(/the following representatives exist/) do |representatives_table|
-#     representatives_table.hashes.each do |representative|
-#         Representative.create representative
-#     end
-# end
+Feature: show representatives profile when search by address and click on representatives' name
 
-# Given(/^(?:|I )am on (.+)$/) do |page_name|
-#     visit path_to(page_name)
-# end
+    As a registered voter
+    So that I can enter address in search bar and find out more information about a representative
+    I want to see a profile of the chosen representative
+ 
+ Background: representative data in database
+ 
+ Scenario: Search for representative address in search field 1
+  Given I am on the representatives page
+  When I fill in "address" with "California"
+  And I press "Search"
+  Then I should see "Joseph R. Biden"
+  And I should see "Betty T. Yee"
+  And I should not see "Mitch McConnell"
+  When I check out "Dianne Feinstein"
+  Then I should see "Dianne Feinstein"
+  Then I should see "Democratic Party"
+  And I should see "U.S. Senator"
+  
+    
 
-# When(/^(?:|I )fill in "([^"]*)" with "([^"]*)"$/) do |field, value|
-#     fill_in(field, with: value)
-# end
-
-# When(/^(?:|I )press '([^"]*)'$/) do |button|
-#     click_button(button)
-# end
-
-# When('I follow {string}') do |string|
-#     # puts page.body
-#     link = string + 'Donald J. Trump'
-#     click_link(link)
-# end
-
-# Then('I should see {string}') do |string|
-#     if page.respond_to? :should
-#         page.should have_content(string)
-#     else
-#         assert page.has_content?(string)
-#     end
-# end
-
-# Then('I should not see {string}') do |string|
-#     if page.respond_to? :should
-#         !page.should have_content(string)
-#     else
-#         !assert page.has_content?(string)
-#     end
-# end
-
-# def path_to(page_name)
-#     case page_name
-#     when /search page/i
-#         representatives_path
-#     when /profile page/i
-#         representative_profile_page_path(1)
-#     when /results page/i
-#         search_representatives_path('california')
-#     end
-# end

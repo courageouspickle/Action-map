@@ -6,20 +6,20 @@ require 'ostruct'
 
 civic_result1 = OpenStruct.new(
     { officials: [OpenStruct.new({ address:   [OpenStruct.new({
-                                                                  city:  'Washington',
-                                                                  state: 'DC',
-                                                                  zip:   '20500',
-                                                                  line1: '1600 Pennsylvania Avenue Northwest'
+                                                                  city:   'Washington',
+                                                                  state:  'DC',
+                                                                  zip:    '20500',
+                                                                  street: '1600 Pennsylvania Avenue Northwest'
                                                               })],
                                    name:      'Donald J. Trump',
                                    party:     'Republican Party',
                                    photo_url: 'https://www.whitehouse.gov/sites/whitehouse.gov/
 files/images/45/PE%20Color.jpg' }),
                   OpenStruct.new({ address:   [OpenStruct.new({
-                                                                  city:  'Berkeley',
-                                                                  state: 'CA',
-                                                                  zip:   '00000',
-                                                                  line1: 'test address'
+                                                                  city:   'Berkeley',
+                                                                  state:  'CA',
+                                                                  zip:    '00000',
+                                                                  street: 'test address'
                                                               })],
                                    name:      'test',
                                    party:     'Democratic Party',
@@ -144,17 +144,17 @@ street: 'Dwight Way', state: 'CA', zip: '94720',
             expect(!reps.empty?)
         end
 
-        #         it 'create the representatives with the correct attributes' do
-        #             reps = Representative.civic_api_to_representative_params(civic_result1)
-        #             reps.each_with_index do |r, index|
-        #                 expect(r.name).to eq civic_result.officials[index].name
-        # #                 expect(r.address).to eq extract_address(civic_result.officials[index].address)
-        #                 expect(r.party).to eq civic_result.officials[index].party
-        #                 expect(r.photo).to eq civic_result.officials[index].photo
-        #                 expect(r.ocdid).to eq civic_result.offices[index].division_id
-        #                 expect(r.title).to eq civic_result.offices[index].name
-        #             end
-        #         end
+        it 'create the representatives with the correct attributes' do
+            reps = Representative.civic_api_to_representative_params(civic_result1)
+            reps.each_with_index do |r, index|
+                expect(r.name).to eq civic_result1.officials[index].name
+                #                 expect(r.address).to eq extract_address(civic_result.officials[index].address)
+                expect(r.party).to eq civic_result1.officials[index].party
+                expect(r.photo).to eq civic_result1.officials[index].photo_url
+                expect(r.ocdid).to eq civic_result1.offices[index].division_id
+                expect(r.title).to eq civic_result1.offices[index].name
+            end
+        end
 
         it 'create the representatives without address, party, and photo_url' do
             reps = Representative.civic_api_to_representative_params(civic_result2)
@@ -165,13 +165,12 @@ street: 'Dwight Way', state: 'CA', zip: '94720',
             end
         end
 
-        #         it 'insert each representative only once' do
-        #             Representative.civic_api_to_representative_params(civic_result2)
-        #             reps = Representative.civic_api_to_representative_params(civic_result2)
-        #             reps.each do |r|
-        #                 expect(Representative.where(name: r.name, ocdid: r.ocdid, title: r.title,
-        # address: r.address, party: r.party, photo: r.photo_url).size).to eq 1
-        #             end
-        #         end
+        it 'insert each representative only once' do
+            Representative.civic_api_to_representative_params(civic_result2)
+            reps = Representative.civic_api_to_representative_params(civic_result2)
+            reps.each do |r|
+                expect(Representative.where(name: r.name, ocdid: r.ocdid, title: r.title).size).to eq 1
+            end
+        end
     end
 end
