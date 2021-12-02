@@ -114,7 +114,8 @@ class Representative < ApplicationRecord
             params = parse_official(official, title_temp, ocdid_temp)
 
             rep = Representative.where({name: official.name, title: title_temp }).limit(1).take
-            if rep.nil? || rep.empty? || rep.blank?
+#             if rep.nil? || rep.empty? || rep.blank?
+            if rep.nil? || rep.blank?
                 rep = Representative.create!(params)
                 rep.save
             end
