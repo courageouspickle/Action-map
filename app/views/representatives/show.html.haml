@@ -1,5 +1,5 @@
 %h1 Representatives Profile
-%link(rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css")
+-# %link(rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css")
 
 %ul#details
 - @representatives.each do |rep|
@@ -17,7 +17,7 @@
 
     %li
         Address:
-        = rep.street + ' ' + rep.city + ' ' + rep.state + ' ' + rep.zip
+        #{rep.street} #{rep.city} #{rep.state} #{rep.zip}
 
     %li
         Party:
