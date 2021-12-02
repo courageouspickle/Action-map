@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'rails_helper'
 require 'ostruct'
@@ -116,7 +118,7 @@ describe 'Representatives' do
 
             address.each do |addr|
                 address_temp += '\n' if address_temp != ''
-                addr_temp = addr.line1 + ', ' + addr.city + ', ' + addr.state + ', ' + addr.zip
+                addr_temp = "#{addr.line1}, #{addr.city}, #{addr.state}, #{addr.zip}"
                 address_temp += addr_temp
             end
             address_temp

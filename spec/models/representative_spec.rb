@@ -3,22 +3,21 @@
 require 'rails_helper'
 
 describe Representative do
-  it 'should be valid' do
-     expect(Representative).not_to raise_error
-  end
-  
-  describe 'can get valid address from API' do
-      before(:each) do
-          @representative = Representative.new(state: 'CA')
-      end
+    it 'should be valid' do
+        expect(Representative).not_to raise_error
+    end
 
-      it 'is a hash' do
-          expect(@representative.address).to have_key(:state)
-      end
+    describe 'can get valid address from API' do
+        before(:each) do
+            @representative = Representative.new(state: 'CA')
+        end
 
-      it 'sets state' do
-          expect(@representative.state).to eq 'CA'
-      end
+        it 'is a hash' do
+            expect(@representative.address).to have_key(:state)
+        end
 
-   end
-end 
+        it 'sets state' do
+            expect(@representative.state).to eq 'CA'
+        end
+    end
+end
