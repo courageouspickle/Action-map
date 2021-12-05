@@ -17,6 +17,7 @@ Feature: show representatives profile when search by address and click on repres
   Then I should see "Dianne Feinstein"
   Then I should see "Democratic Party"
   And I should see "U.S. Senator"
+  And I should not see "U.S. Representative"
   
     
 
