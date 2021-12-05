@@ -11,7 +11,13 @@ Background: I am on the ActionMap page
 Scenario: Select California, then Alameda County
   When I click the state "CA"
   When I click "Alameda County"
+  When I visit "Alameda County"
+  Then I should see "Betty T. Yee"
+  Then I should not see "Mike Pence"
   
 Scenario: Select Kansas, then Pawnee Country
   When I click the state "KS"
-  When I click "Pawnee County"
+  When I click "Hamilton County"
+  When I visit "Hamilton County"
+  Then I should see "Rob Portman"
+  Then I should not see "Mike Pence"

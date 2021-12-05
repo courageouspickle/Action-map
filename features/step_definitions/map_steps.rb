@@ -15,6 +15,10 @@ When(/I click "([^"]*)"/) do |_thing|
     '/'
 end
 
+When(/I visit "([^"]*)"/) do |thing|
+    visit search_representatives_path(thing)
+end
+
 Given(/^(?:|I )am on (.+)$/) do |page_name|
     visit path_to(page_name)
 end
