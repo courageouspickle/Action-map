@@ -26,4 +26,8 @@ describe NewsItemsController, type: :controller do
             expect(response).to render_template(:show)
         end
     end
+  
+    describe 'MATCH #delete'
+    
+    describe 
 end

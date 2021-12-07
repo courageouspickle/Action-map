@@ -9,6 +9,8 @@ class NewsItem < ApplicationRecord
             representative_id: representative_id
         )
     end
+  
+    
 
     def self.all_issues
         [

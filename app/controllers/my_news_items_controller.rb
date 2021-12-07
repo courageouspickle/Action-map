@@ -33,11 +33,19 @@ class MyNewsItemsController < SessionController
         end
     end
 
+    #def destroy
+     #   @news_item.destroy
+      #  redirect_to representative_news_items_path(@representative),
+       #             notice: 'News was successfully destroyed.'
+    #end
+  
     def destroy
-        @news_item.destroy
-        redirect_to representative_news_items_path(@representative),
-                    notice: 'News was successfully destroyed.'
+      @news_item = NewsItem.find(params[:id])
+      @news_item.destroy
+      flash[:notice] = "News was successfully destroyed."
+      redirect_to representative_news_items_path(@representative)
     end
+
 
     private
 
@@ -66,7 +74,7 @@ class MyNewsItemsController < SessionController
 
     # Only allow a list of trusted parameters through.
     def news_item_params
-        params.require(:news_item).permit(:news, :title, :description, :link, :representative_id)
+        params.require(:news_item).permit(:news, :title, :description, :link, :representative_id, :issue)
     end
 
     def set_rating
