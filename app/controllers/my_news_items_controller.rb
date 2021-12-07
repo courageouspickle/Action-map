@@ -58,6 +58,7 @@ class MyNewsItemsController < SessionController
         # 'Religious Freedom', 'Border Security', 'Minimum Wage', 'Equal Pay']
         @issues_list = NewsItem.all_issues
     end
+  
 
     def set_news_item
         @news_item = NewsItem.find(params[:id])
