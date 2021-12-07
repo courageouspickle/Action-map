@@ -3,7 +3,7 @@
 class MyNewsItemsController < SessionController
     before_action :set_representative
     before_action :set_representatives_list
-	  before_action :set_issues_list
+    before_action :set_issues_list
     before_action :set_news_item, only: %i[edit update destroy]
     before_action :set_rating, only: %i[edit update destroy]
     before_action :set_rating_params, only: %i[update]
@@ -50,9 +50,13 @@ class MyNewsItemsController < SessionController
     def set_representatives_list
         @representatives_list = Representative.all.map { |r| [r.name, r.id] }
     end
-	
-	  def set_issues_list
-        @issues_list = ["Free Speech", "Immigration", "Terrorism", "Social Security and Medicare", "Abortion", "Student Loans", "Gun Control", "Unemployment", "Climate Change", "Homelessness", "Racism", "Tax Reform", "Net Neutrality", "Religious Freedom", "Border Security", "Minimum Wage", "Equal Pay"]
+
+    def set_issues_list
+        #         @issues_list = ['Free Speech', 'Immigration', 'Terrorism', 'Social Security
+        # and Medicare', 'Abortion', 'Student Loans', 'Gun Control', 'Unemployment',
+        # 'Climate Change', 'Homelessness', 'Racism', 'Tax Reform', 'Net Neutrality',
+        # 'Religious Freedom', 'Border Security', 'Minimum Wage', 'Equal Pay']
+        @issues_list = NewsItem.all_issues
     end
 
     def set_news_item
