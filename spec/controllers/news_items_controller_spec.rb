@@ -18,16 +18,4 @@ describe NewsItemsController, type: :controller do
             expect(response).to render_template(:index)
         end
     end
-
-    describe 'GET #show' do
-        it 'displays details of a news item' do
-            get :show, params: { representative_id: @rep0.id, id: @rep0_news_item.id }
-            expect(assigns(:news_item).title).to eq 'news0'
-            expect(response).to render_template(:show)
-        end
-    end
-
-    describe 'MATCH #delete'
-
-    describe
 end
