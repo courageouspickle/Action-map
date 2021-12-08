@@ -33,19 +33,18 @@ class MyNewsItemsController < SessionController
         end
     end
 
-    #def destroy
-     #   @news_item.destroy
-      #  redirect_to representative_news_items_path(@representative),
-       #             notice: 'News was successfully destroyed.'
-    #end
-  
-    def destroy
-      @news_item = NewsItem.find(params[:id])
-      @news_item.destroy
-      flash[:notice] = "News was successfully destroyed."
-      redirect_to representative_news_items_path(@representative)
-    end
+    # def destroy
+    #   @news_item.destroy
+    #  redirect_to representative_news_items_path(@representative),
+    #             notice: 'News was successfully destroyed.'
+    # end
 
+    def destroy
+        @news_item = NewsItem.find(params[:id])
+        @news_item.destroy
+        flash[:notice] = 'News was successfully destroyed.'
+        redirect_to representative_news_items_path(@representative)
+    end
 
     private
 
@@ -66,7 +65,6 @@ class MyNewsItemsController < SessionController
         # 'Religious Freedom', 'Border Security', 'Minimum Wage', 'Equal Pay']
         @issues_list = NewsItem.all_issues
     end
-  
 
     def set_news_item
         @news_item = NewsItem.find(params[:id])
